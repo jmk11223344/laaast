@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹사이트 개발</title>
+</head>
+<body>
+
+
+
+    <h1>24/8월13일 웹사이트</h1><br>
+
+
+    <h3>정명교는 최고다</h3>
+    <h4>나는 짱이다</h4>
+
+    <iframe src="https://cdn.discordapp.com/attachments/1222900839761317928/1266414540686626847/ba9dd1d7344833f5.png?ex=66bc2233&is=66bad0b3&hm=cf33f514f737939859db4ad7b5a72ab1711dba5c574f1326aa98b362a6f3a7f1&"
+     width="1000px" height="1000px"></iframe>
+     <br> <br>
+
+
+    <a id="self-statement" href="https://www.naver.com/" target="_blank">네이버</a>
+    <br><br>
+    <div id="video">
+        hellosssss
+     </div>
+     <script>
+        function vopen(){
+            let w=window.innerWidth;
+            let h=window.innerHeight;
+            document.getElementById('video').innerHTML = `<iframe width="${w-30}" height="${w/560*315}" src="https://www.youtube.com/embed/lU12lJeImOY?si=7eVylnwh8OmArYwZ"></iframe>`;
+        }
+        addEventListener("resize", (event)=>{});
+        onresize = (event)=>{};
+        window.onresize = vopen;
+        vopen();
+     </script>
+
+    <h1 id="clock">로딩중 ...</h1>
+    <h1><hr></h1>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+            const dayOfWeek = daysOfWeek[now.getDay()];
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, '0');
+            const day = now.getDate().toString().padStart(2, '0');
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            let ampm = 'AM';
+            let displayHours = hours;
+
+            if (hours >= 12) {
+                ampm = 'PM';
+                displayHours = hours % 12;
+                if (displayHours === 0) {
+                displayHours = 12;
+                }
+            }
+
+            const timeString = `${year}-${month}-${day} (${dayOfWeek}) ${displayHours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // 매 초마다 시계 업데이트
+        setInterval(updateClock, 1000);
+
+        // 페이지 로드 시에도 시계 업데이트
+        updateClock();
+    </script>
+
+    <label>
+        입력
+
+    <input type="number"  id="입력값" value="0.0">
+    <select name=" 입력단위" id="i">
+        <option value="원">원</option>
+        <option value="달러">달러</option>
+        <option value="엔">엔</option>
+    </select>
+ </label>
+
+ <label>
+    출력
+
+     <input type="number"  id="출력값" value="0.0" >
+     <select name=" 출력단위" id="o">
+     <option value="원">원</option>
+     <option value="달러" selected>달러</option>
+     <option value="엔">엔</option>
+     </select>
+ </label>
+
+
+ <button onclick="calc()">계산하기</button>
+ <script>
+    function calc(){
+        let inumb = document.getElementById("입력값").value;
+        let onumb = document.getElementById("출력값");
+
+        let ii = document.getElementById("i");
+        let oo = document.getElementById("o");
+        switch(ii.value){
+            case "원":
+                if(oo.value == "달러"){
+                    onumb.value = inumb/(137.700000);                
+                }else if(oo.value == "엔"){
+                    onumb.value = inumb/(9.277963);
+                }else{
+                    onumb.value = inumb;
+                }
+                break;
+            case "달러": 
+                break;
+        }
+    }
+ </script>
+    </body>
+</body>
+</html>
